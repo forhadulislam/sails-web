@@ -1,0 +1,13 @@
+<h2> Add User</h2>
+
+<form action="/user/update" method="post">
+
+    <input value="<%= user.name %>" type="text" name="name" id="name" placeholder="Type your name">
+    
+    <input value="<%= user.email %>" type="email" name="email" id="email" placeholder="Your email">
+    
+    <input value="<%= user.password %>" type="password" name="password" id="password" placeholder="password">
+    
+    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    <input type="submit" value="Update User" />
+</form>

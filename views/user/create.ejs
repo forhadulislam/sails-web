@@ -1,0 +1,13 @@
+<h2> Add User</h2>
+
+<form action="/user/create" method="post">
+
+    <input type="text" name="name" id="name" placeholder="Type your name">
+    
+    <input type="email" name="email" id="email" placeholder="Your email">
+    
+    <input type="password" name="password" id="password" placeholder="password">
+    
+    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    <input type="submit" value="Add User" />
+</form>
