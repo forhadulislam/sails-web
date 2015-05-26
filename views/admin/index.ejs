@@ -1,0 +1,24 @@
+
+<div class="col-md-offset-1 col-md-6">
+    <table class="table table-striped">
+    <h2> All Admin</h2>
+    <tr>
+        <th>Email</th>
+        <th>Created</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    
+    <% _.each(admins, function(admin){ %>
+        <tr> 
+            <td><%= admin.email %></td>
+            <td><%= admin.createdAt %></td>
+            <td><a href="/admin/edit/<%= admin.id %>" class="btn btn-primary">Edit</a></td>
+            <td><a href="/admin/destroy/<%= admin.id %>" class="btn btn-danger">Delete</a></td>
+        </tr>
+    <% }) %>
+    
+    </table>
+</div>
+
+</div>
