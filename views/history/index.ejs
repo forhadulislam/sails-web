@@ -1,0 +1,26 @@
+
+<div class="col-md-offset-1 col-md-8">
+    <table class="table table-striped">
+    <h2> Histories </h2>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    
+    <% _.each(histories, function(history){ %>
+        <tr>
+            <td><%= history.title %></td>
+            <td><%= history.description %></td>
+            <td><%= history.date %></td>
+            <td><a href="/admin/edit/<%= history.id %>" class="btn btn-primary">Edit</a></td>
+            <td><a href="/admin/destroy/<%= history.id %>" class="btn btn-danger">Delete</a></td>
+        </tr>
+    <% }) %>
+    
+    </table>
+</div>
+
+</div>

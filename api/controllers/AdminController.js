@@ -21,12 +21,12 @@ module.exports = {
         
         
         if( req.method == 'POST'){
-            message = "You have posted";   
+            findAdmin = Admin.findOne({ email: req.param('email'), password: req.param('password')});
+            message = findAdmin;   
+            message = req.param('email');
         }
         
-        res.view({
-            message: message
-        });
+        res.view({message: message, layout: null});
 	},
 	'add': function(req, res){
         var message = '';
