@@ -7,6 +7,11 @@
 
 module.exports = {
     'index': function(req, res){
+        
+        if(!req.signedCookies.adminId){
+            return res.redirect("/admin/login");
+        }
+        
         Admin.find(function(err, admins){
         
             res.view({
@@ -19,14 +24,24 @@ module.exports = {
 	'login': function(req, res){
         var message = '';
         
-        
         if( req.method == 'POST'){
-            findAdmin = Admin.findOne({ email: req.param('email'), password: req.param('password')});
-            message = findAdmin;   
-            message = req.param('email');
+            Admin.findOne({ email: req.param('email'), password: req.param('password')}, function(err, admin){
+                if(admin){
+                    res.cookie('adminId', admin.id, { signed: true});
+                    return res.redirect("/admin");
+                }else{
+                    message = "Invalid email or password";
+                    return res.view({message: message, layout: null});
+                }
+            });
+            
+        }else{
+            return res.view({message: message, layout: null});
         }
-        
-        res.view({message: message, layout: null});
+	},
+	'logout': function(req, res){
+        res.cookie('adminId', '', { maxAge: -10000 });
+        return res.redirect('/admin/login');
 	},
 	'add': function(req, res){
         var message = '';
