@@ -13,7 +13,6 @@ module.exports = {
         }
         
         Admin.find(function(err, admins){
-        
             res.view({
                 admins: admins
             });
